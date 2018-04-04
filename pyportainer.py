@@ -79,6 +79,7 @@ class PyPortainer():
             verify=self.verifySSL)
         return r.json()
         
+        
     
     def get_stacks(self, endpoint):
         r = requests.get(
