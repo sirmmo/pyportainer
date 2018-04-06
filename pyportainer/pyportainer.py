@@ -34,6 +34,15 @@ class PyPortainer():
         
         
     
+    def get_status(self):
+        r = requests.get(
+            self.portainer_endpoint+"/status", 
+            headers={"Authorization": "Bearer {}".format(self.token)}, 
+            verify=self.verifySSL)
+        return r.json()
+        
+        
+    
     def get_endpoints(self):
         r = requests.get(
             self.portainer_endpoint+"/endpoints", 
@@ -41,7 +50,7 @@ class PyPortainer():
             verify=self.verifySSL)
         return r.json()
         
-    def new_endpoints(self, options):
+    def new_endpoint(self, options):
         r = requests.post(
             self.portainer_endpoint+"/endpoints", 
             data=json.dumps(options), 
